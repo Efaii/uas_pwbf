@@ -9,21 +9,21 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-const allowedOrigins = [
+const dynamicAllowedOrigins = [
     'http://127.0.0.1:5500',
-    process.env.FRONTEND_URL
+    'http://localhost:5500',
 ];
 
-if (process.env.FRONTEND_URL) {
-    allowedOrigins.push(process.env.FRONTEND_URL);
+if (process.env.FRONTEND_URL && process.env.FRONTEND_URL.trim() !== '') {
+    dynamicAllowedOrigins.push(process.env.FRONTEND_URL.trim());
 }
 
 app.use(cors({
     origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
+        if (!origin || dynamicAllowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
-            console.error(`CORS Error: Origin ${origin} not allowed. Allowed origins:`, allowedOrigins);
+            console.error(`CORS Error: Origin ${origin} not allowed. Allowed origins:`, dynamicAllowedOrigins);
             callback(new Error('Not allowed by CORS'), false);
         }
     },

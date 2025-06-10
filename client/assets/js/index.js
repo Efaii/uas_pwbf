@@ -85,7 +85,7 @@ editPortfolioModal.addEventListener('click', (event) => {
 editPortfolioForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const id = document.getElementById('editId').value;
+    const idToUpdate = document.getElementById('editId').value;
     const namaKegiatan = document.getElementById('editNamaKegiatan').value;
     const waktuKegiatan = document.getElementById('editWaktuKegiatan').value;
 
@@ -95,7 +95,7 @@ editPortfolioForm.addEventListener('submit', async (event) => {
     };
 
     try {
-        const response = await fetch(`${BASE_API_URL}/api/portofolio/${id}`, {
+        const response = await fetch(`${BASE_API_URL}/api/portofolio/${idToUpdate}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
