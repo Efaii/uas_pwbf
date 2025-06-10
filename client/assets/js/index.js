@@ -9,7 +9,7 @@ menuToggle.addEventListener('click', () => {
 
 async function loadPortofolio() {
     try {
-        const response = await fetch('${BASE_API_URL}/api/portofolio');
+        const response = await fetch(`${BASE_API_URL}/api/portofolio`);
         const data = await response.json();
 
         const tableBody = document.querySelector('#portofolioTable tbody');
