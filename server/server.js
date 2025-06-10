@@ -116,45 +116,6 @@ app.get('/api/portofolio', (req, res) => {
     });
 });
 
-app.put('/api/portofolio/:id', (req, res) => {
-    console.log('=== PUT /api/portofolio/:id REQUEST ===');
-    console.log('Origin:', req.get('Origin'));
-    
-    const id = req.params.id;
-    const { nama_kegiatan, waktu_kegiatan } = req.body;
-
-    console.log('ID:', id);
-    console.log('Data:', { nama_kegiatan, waktu_kegiatan });
-
-    if (!nama_kegiatan || !waktu_kegiatan) {
-        return res.status(400).json({ error: 'Nama kegiatan dan waktu kegiatan diperlukan!' });
-    }
-
-    if (isNaN(id)) {
-        return res.status(400).json({ error: 'ID harus berupa angka!' });
-    }
-
-    const sql = 'UPDATE portofolio SET nama_kegiatan = ?, waktu_kegiatan = ? WHERE id = ?';
-
-    db.query(sql, [nama_kegiatan, waktu_kegiatan, id], (err, result) => {
-        if (err) {
-            console.error('Database update error:', err);
-            return res.status(500).json({ 
-                message: 'Terjadi kesalahan server saat memperbarui data.',
-                details: err.message
-            });
-        }
-        
-        console.log('Update result:', result);
-        
-        if (result.affectedRows === 0) {
-            return res.status(404).json({ message: 'Data tidak ditemukan.' });
-        }
-        
-        res.status(200).json({ message: 'Data berhasil diperbarui!' });
-    });
-});
-
 app.post('/api/portofolio', (req, res) => {
     console.log('=== POST /api/portofolio REQUEST ===');
     console.log('Origin:', req.get('Origin'));
@@ -245,15 +206,15 @@ app.get('/api/test-db', (req, res) => {
 });
 
 // Global error handler
-app.use((err, req, res, next) => {
-    console.error('=== GLOBAL ERROR ===');
-    console.error('Error:', err.message);
-    console.error('Stack:', err.stack);
-    
-    res.status(500).json({
-        error: 'Internal Server Error',
-        message: err.message
-    });
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(200);
+    } else {
+        next();
+    }
 });
 
 // Start server

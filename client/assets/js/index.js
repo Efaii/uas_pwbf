@@ -28,14 +28,12 @@ async function loadPortofolio() {
                 <td>${item.nama_kegiatan}</td>
                 <td>${item.waktu_kegiatan}</td>
                 <td>
-                    <button class="edit-btn" data-id="${item.id}" data-nama="${item.nama_kegiatan}" data-waktu="${item.waktu_kegiatan}">Edit</button>
                     <button class="delete-btn" data-id="${item.id}" data-name="${item.nama_kegiatan || 'Tidak Diketahui'}">Hapus</button>
                 </td>
             `;
             tableBody.appendChild(row);
         });
 
-        addEditButtonListener();
         addDeleteButtonListener();
 
     } catch (error) {
@@ -43,81 +41,6 @@ async function loadPortofolio() {
         document.getElementById('portofolioTable').innerHTML = '<tr><td colspan="5">Gagal memuat data portofolio.</td></tr>'
     }
 }
-
-// edit data
-function addEditButtonListener() {
-    const editButtons = document.querySelectorAll('.edit-btn'); // Dapatkan semua tombol edit
-    editButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            const id = event.target.dataset.id;
-            const nama = event.target.dataset.nama;
-            const waktu = event.target.dataset.waktu;
-            showEditModal(id, nama, waktu);
-        });
-    });
-}
-
-const editPortfolioModal = document.getElementById('editPortfolioModal');
-const editPortfolioForm = document.getElementById('editPortfolioForm');
-const closeEditModalBtn = document.getElementById('closeEditModalBtn');
-const cancelEditBtn = document.getElementById('cancelEditBtn');
-
-function showEditModal(id, namaKegiatan, waktuKegiatan) {
-    document.getElementById('editId').value = id;
-    document.getElementById('editNamaKegiatan').value = namaKegiatan;
-    document.getElementById('editWaktuKegiatan').value = waktuKegiatan;
-    editPortfolioModal.classList.add('show');
-}
-
-function hideEditModal() {
-    editPortfolioModal.classList.remove('show');
-}
-
-closeEditModalBtn.addEventListener('click', hideEditModal);
-cancelEditBtn.addEventListener('click', hideEditModal);
-
-editPortfolioModal.addEventListener('click', (event) => {
-    if (event.target === editPortfolioModal) {
-        hideEditModal();
-    }
-});
-
-editPortfolioForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const idToUpdate = document.getElementById('editId').value;
-    const namaKegiatan = document.getElementById('editNamaKegiatan').value;
-    const waktuKegiatan = document.getElementById('editWaktuKegiatan').value;
-
-    const updatedData = {
-        nama_kegiatan: namaKegiatan,
-        waktu_kegiatan: waktuKegiatan
-    };
-
-    try {
-        const response = await fetch(`${BASE_API_URL}/api/portofolio/${idToUpdate}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(updatedData)
-        });
-
-        if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
-        }
-
-        const result = await response.json();
-        console.log('Data berhasil diupdate:', result);
-        hideEditModal();
-        alert('Data berhasil diupdate!');
-        location.reload();
-    } catch (error) {
-        console.error('Gagal mengupdate portofolio:', error);
-        alert('Gagal mengupdate portofolio: ' + error.message);
-    }
-});
 
 // function delete
 async function addDeleteButtonListener() {

@@ -500,7 +500,7 @@ tbody tr:nth-child(odd) {
     opacity: 1;
 }
 
-#addPortfolioFormContainer, #editPortfolioFormContainer {
+#addPortfolioFormContainer {
     background: #ffffff;
     padding: 20px;
     width: 100%;
@@ -544,7 +544,7 @@ tbody tr:nth-child(odd) {
     color: #202124;
 }
 
-#addPortfolioFormContainer h6, #editPortfolioFormContainer h6 {
+#addPortfolioFormContainer h6 {
     text-align: center;
     font-size: 24px;
     font-weight: 700;
@@ -552,7 +552,7 @@ tbody tr:nth-child(odd) {
     margin-bottom: 25px;
 }
 
-#addPortfolioForm, #editPortfolioForm {
+#addPortfolioForm {
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -565,14 +565,7 @@ tbody tr:nth-child(odd) {
     margin-bottom: 5px;
 }
 
-#editPortfolioForm label { /* <-- Tambahkan ini untuk label */
-    color: #202124;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-#addPortfolioForm input, #editPortfolioForm input {
+#addPortfolioForm input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -590,18 +583,18 @@ tbody tr:nth-child(odd) {
     -o-transition: border-color 0.3s ease;
 }
 
-#addPortfolioForm input:focus, #editPortfolioForm input:focus {
+#addPortfolioForm input:focus {
     border-color: #4285f4;
     outline: none;
 }
 
-#addPortfolioForm .button-group, #editPortfolioForm .button-group {
+#addPortfolioForm .button-group {
     display: flex;
     gap: 15px;
     margin-top: 20px;
 }
 
-#addPortfolioForm button, #editPortfolioForm button {
+#addPortfolioForm button {
     flex: 1;
     padding: 12px 24px;
     cursor: pointer;
@@ -620,21 +613,21 @@ tbody tr:nth-child(odd) {
     -o-transition: all 0.3s ease;
 }
 
-#addPortfolioForm .submit, #editPortfolioForm .submit {
+#addPortfolioForm .submit {
     background-color: #34a853;
     color: #ffffff;
 }
 
-#addPortfolioForm .submit:hover, #editPortfolioForm .submit:hover {
+#addPortfolioForm .submit:hover {
     background-color: #0d652d;
 }
 
-#addPortfolioForm .cancel, #editPortfolioForm .cancel {
+#addPortfolioForm .cancel {
     background-color: #ea4335;
     color: #ffffff;
 }
 
-#addPortfolioForm .cancel:hover, #editPortfolioForm .cancel:hover {
+#addPortfolioForm .cancel:hover {
     background-color: #a50e0e;
 }
 /* portofolio */
