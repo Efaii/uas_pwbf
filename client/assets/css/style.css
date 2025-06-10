@@ -500,7 +500,7 @@ tbody tr:nth-child(odd) {
     opacity: 1;
 }
 
-#addPortfolioFormContainer, #editPortofolioFormContainer {
+#addPortfolioFormContainer, #editPortfolioFormContainer {
     background: #ffffff;
     padding: 20px;
     width: 100%;
