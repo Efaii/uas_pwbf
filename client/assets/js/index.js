@@ -1,7 +1,7 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const navUl = document.querySelector('nav ul');
 
-const BASE_API_URL = 'https://uaspwbf-production.up.railway.app';
+const BASE_API_URL = 'https://uaspwbfbe-production.up.railway.app';
 
 menuToggle.addEventListener('click', () => {
     navUl.classList.toggle('active');
