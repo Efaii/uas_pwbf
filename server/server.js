@@ -84,15 +84,15 @@ app.get('/api/portofolio', (req, res) => {
 });
 
 app.put('/api/portofolio/:id', (req, res) => {
-    const { id } = req.params;
+    const id = req.params.id;
     const { nama_kegiatan, waktu_kegiatan } = req.body;
 
     if (!nama_kegiatan || !waktu_kegiatan) {
-        return res.status(400).json({ error: 'Nama kegiatan dan waktu kegiatan harus diperlukan.' });
+        return res.status(400).json({ error: 'Nama kegiatan dan waktu kegiatan diperlukan!' });
     }
 
     const sql = 'UPDATE portofolio SET nama_kegiatan = ?, waktu_kegiatan = ? WHERE id = ?';
-    connection.query(sql, [nama_kegiatan, waktu_kegiatan, id], (err, result) => {
+    db.query(sql, [nama_kegiatan, waktu_kegiatan, id], (err, result) => {
         if (err) {
             console.error('Kesalahan saat memperbarui data di database:', err);
             return res.status(500).json({ message: 'Terjadi kesalahan server saat memperbarui data.' });
@@ -108,7 +108,7 @@ app.post('/api/portofolio', (req, res) => {
     const { nama_kegiatan, waktu_kegiatan } = req.body;
 
     if (!nama_kegiatan || !waktu_kegiatan) {
-        return res.status(400).json({ error: 'Nama kegiatan, dan waktu kegiatan diperlukan!' });
+        return res.status(400).json({ error: 'Nama kegiatan dan waktu kegiatan diperlukan!' });
     }
 
     const sql = 'INSERT INTO portofolio (nama_kegiatan, waktu_kegiatan) VALUES (?, ?)';
