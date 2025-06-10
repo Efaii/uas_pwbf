@@ -1,7 +1,7 @@
 const menuToggle = document.querySelector('.menu-toggle');
 const navUl = document.querySelector('nav ul');
 
-const BASE_API_URL = 'https://nama-aplikasi-backend-anda-unik.onrender.com';
+const BASE_API_URL = 'https://uaspwbf-production.up.railway.app';
 
 menuToggle.addEventListener('click', () => {
     navUl.classList.toggle('active');
