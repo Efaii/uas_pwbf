@@ -95,7 +95,7 @@ editPortfolioForm.addEventListener('submit', async (event) => {
     };
 
     try {
-        const response = await fetch(`${API_BASE_URL}/api/portofolio/${id}`, {
+        const response = await fetch(`${BASE_API_URL}/api/portofolio/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
