@@ -63,7 +63,6 @@ const closeEditModalBtn = document.getElementById('closeEditModalBtn');
 const cancelEditBtn = document.getElementById('cancelEditBtn');
 
 function showEditModal(namaKegiatan, waktuKegiatan) {
-    document.getElementById('editId').value = id;
     document.getElementById('editNamaKegiatan').value = namaKegiatan;
     document.getElementById('editWaktuKegiatan').value = waktuKegiatan;
     editPortfolioModal.classList.add('show');
