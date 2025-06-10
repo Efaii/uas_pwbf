@@ -415,6 +415,30 @@ td .delete-btn:hover {
     background-color: #a50e0e;
 }
 
+td .edit-btn {
+    background-color: #fbbc04;
+    color: #ffffff;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid #202124;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    transition: background-color 0.3s ease;
+    -webkit-transition: background-color 0.3s ease;
+    -moz-transition: background-color 0.3s ease;
+    -ms-transition: background-color 0.3s ease;
+    -o-transition: background-color 0.3s ease;
+}
+
+td .edit-btn:hover {
+    background-color: #e37400;
+}
+
 tr {
     font-size: 16px;
     font-weight: 500;
@@ -476,24 +500,7 @@ tbody tr:nth-child(odd) {
     opacity: 1;
 }
 
-.form-container {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    z-index: 1000;
-}
-
-.form-container.show {
-    display: block;
-}
-
-#addPortfolioFormContainer {
+#addPortfolioFormContainer, #editPortofolioFormContainer {
     background: #ffffff;
     padding: 20px;
     width: 100%;
@@ -537,7 +544,7 @@ tbody tr:nth-child(odd) {
     color: #202124;
 }
 
-#addPortfolioFormContainer h6 {
+#addPortfolioFormContainer h6, #editPortfolioFormContainer h6 {
     text-align: center;
     font-size: 24px;
     font-weight: 700;
@@ -545,7 +552,7 @@ tbody tr:nth-child(odd) {
     margin-bottom: 25px;
 }
 
-#addPortfolioForm {
+#addPortfolioForm, #editPortfolioForm {
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -558,7 +565,14 @@ tbody tr:nth-child(odd) {
     margin-bottom: 5px;
 }
 
-#addPortfolioForm input {
+#editPortfolioForm label { /* <-- Tambahkan ini untuk label */
+    color: #202124;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+#addPortfolioForm input, #editPortfolioForm input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -576,18 +590,18 @@ tbody tr:nth-child(odd) {
     -o-transition: border-color 0.3s ease;
 }
 
-#addPortfolioForm input:focus {
+#addPortfolioForm input:focus, #editPortfolioForm input:focus {
     border-color: #4285f4;
     outline: none;
 }
 
-#addPortfolioForm .button-group {
+#addPortfolioForm .button-group, #editPortfolioForm .button-group {
     display: flex;
     gap: 15px;
     margin-top: 20px;
 }
 
-#addPortfolioForm button {
+#addPortfolioForm button, #editPortfolioForm button {
     flex: 1;
     padding: 12px 24px;
     cursor: pointer;
@@ -606,21 +620,21 @@ tbody tr:nth-child(odd) {
     -o-transition: all 0.3s ease;
 }
 
-#addPortfolioForm .submit {
+#addPortfolioForm .submit, #editPortfolioForm .submit {
     background-color: #34a853;
     color: #ffffff;
 }
 
-#addPortfolioForm .submit:hover {
+#addPortfolioForm .submit:hover, #editPortfolioForm .submit:hover {
     background-color: #0d652d;
 }
 
-#addPortfolioForm .cancel {
+#addPortfolioForm .cancel, #editPortfolioForm .cancel {
     background-color: #ea4335;
     color: #ffffff;
 }
 
-#addPortfolioForm .cancel:hover {
+#addPortfolioForm .cancel:hover, #editPortfolioForm .cancel:hover {
     background-color: #a50e0e;
 }
 /* portofolio */

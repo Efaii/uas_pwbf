@@ -44,76 +44,78 @@ async function loadPortofolio() {
     }
 }
 
-// function edit
-// client/index.js
-
-// Dapatkan elemen form dan containernya
-const editPortfolioFormContainer = document.getElementById('editPortfolioFormContainer');
-const editPortfolioForm = document.getElementById('editPortfolioForm');
-const cancelEditBtn = document.getElementById('cancelEditBtn');
-
-// Tambahkan event listener untuk tombol Batal
-cancelEditBtn.addEventListener('click', () => {
-    editPortfolioFormContainer.classList.remove('show');
-    editPortfolioForm.reset();
-});
-
-// Fungsi untuk menambahkan listener ke tombol Edit
-async function addEditButtonListener() {
-    const editButtons = document.querySelectorAll('.edit-btn');
-
+// edit data
+function addEditButtonListener() {
+    const editButtons = document.querySelectorAll('.edit-btn'); // Dapatkan semua tombol edit
     editButtons.forEach(button => {
         button.addEventListener('click', (event) => {
-            const idToEdit = event.target.dataset.id;
-            const namaToEdit = event.target.dataset.nama;
-            const waktuToEdit = event.target.dataset.waktu;
-
-            // Isi formulir edit dengan data yang ada
-            document.getElementById('editId').value = idToEdit;
-            document.getElementById('editNamaKegiatan').value = namaToEdit;
-            document.getElementById('editWaktuKegiatan').value = waktuToEdit;
-
-            // Tampilkan container form edit
-            editPortfolioFormContainer.classList.add('show');
+            const id = event.target.dataset.id;
+            const nama = event.target.dataset.nama;
+            const waktu = event.target.dataset.waktu;
+            showEditModal(id, nama, waktu);
         });
     });
 }
 
-// Fungsi untuk menangani submit form edit
+const editPortfolioModal = document.getElementById('editPortfolioModal');
+const editPortfolioForm = document.getElementById('editPortfolioForm');
+const closeEditModalBtn = document.getElementById('closeEditModalBtn');
+const cancelEditBtn = document.getElementById('cancelEditBtn');
+
+function showEditModal(namaKegiatan, waktuKegiatan) {
+    document.getElementById('editId').value = id;
+    document.getElementById('editNamaKegiatan').value = namaKegiatan;
+    document.getElementById('editWaktuKegiatan').value = waktuKegiatan;
+    editPortfolioModal.classList.add('show');
+}
+
+function hideEditModal() {
+    editPortfolioModal.classList.remove('show');
+}
+
+closeEditModalBtn.addEventListener('click', hideEditModal);
+cancelEditBtn.addEventListener('click', hideEditModal);
+
+editPortfolioModal.addEventListener('click', (event) => {
+    if (event.target === editPortfolioModal) {
+        hideEditModal();
+    }
+});
+
 editPortfolioForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const idToUpdate = document.getElementById('editId').value;
-    const updatedNamaKegiatan = document.getElementById('editNamaKegiatan').value;
-    const updatedWaktuKegiatan = document.getElementById('editWaktuKegiatan').value;
+    const id = document.getElementById('editId').value;
+    const namaKegiatan = document.getElementById('editNamaKegiatan').value;
+    const waktuKegiatan = document.getElementById('editWaktuKegiatan').value;
 
     const updatedData = {
-        nama_kegiatan: updatedNamaKegiatan,
-        waktu_kegiatan: updatedWaktuKegiatan,
+        nama_kegiatan: namaKegiatan,
+        waktu_kegiatan: waktuKegiatan
     };
 
     try {
-        const response = await fetch(`${BASE_API_URL}/api/portofolio/${idToUpdate}`, {
-            method: 'PUT', // Menggunakan method PUT untuk pembaruan
+        const response = await fetch(`${API_BASE_URL}/api/portofolio/${id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(updatedData)
         });
 
-        const result = await response.json();
-
-        if (response.ok) {
-            alert(result.message);
-            editPortfolioForm.reset();
-            editPortfolioFormContainer.classList.remove('show');
-            loadPortofolio(); // Muat ulang data setelah berhasil
-        } else {
-            alert(`Gagal memperbarui data: ${result.error || result.message}`);
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
         }
+
+        const result = await response.json();
+        console.log('Data berhasil diupdate:', result);
+        hideEditModal();
+        alert('Data berhasil diupdate!');
+        location.reload();
     } catch (error) {
-        console.error('Terjadi kesalahan saat memperbarui data:', error);
-        alert('Terjadi kesalahan koneksi saat memperbarui data.');
+        console.error('Gagal mengupdate portofolio:', error);
+        alert('Gagal mengupdate portofolio: ' + error.message);
     }
 });
 
