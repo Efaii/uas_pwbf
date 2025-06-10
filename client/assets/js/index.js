@@ -22,6 +22,17 @@ async function loadPortofolio() {
 
         data.forEach((item, index) => {
             const row = document.createElement('tr');
+            const rawDate = item.waktu_kegiatan; // Ambil string tanggal dari data backend
+            let formattedDate = rawDate;
+
+            try {
+                const dateObj = new Date(rawDate);
+                formattedDate = dateObj.toLocaleDateString('id-ID');
+            } catch (e) {
+                console.error("Gagal memformat tanggal:", rawDate, e);
+                formattedDate = rawDate;
+            }
+            
             row.innerHTML = `
                 <td>${index + 1}.</td>
                 <td>${item.nama_kegiatan}</td>
