@@ -104,6 +104,22 @@
             </div>
             <button id="showAddFormBtn">Add New</button>
             <div class="modal-overlay" id="modalOverlay">
+                <!-- edit data -->
+                <div id="editPortfolioFormContainer">
+                    <h6>Edit Data Portofolio</h6>
+                    <form id="editPortfolioForm">
+                        <input type="hidden" id="editId"> 
+
+                        <label for="editNamaKegiatan">Nama Kegiatan:</label>
+                        <input type="text" id="editNamaKegiatan" required>
+
+                        <label for="editWaktuKegiatan">Waktu Kegiatan:</label>
+                        <input type="text" id="editWaktuKegiatan" required>
+                        <button type="submit">Simpan Perubahan</button>
+                        <button type="button" id="cancelEditBtn">Batal</button>
+                    </form>
+                </div>
+                <!-- add data -->
                 <div id="addPortfolioFormContainer">
                     <button class="close-btn" id="closeModalBtn">&times;</button>
                     <h6>Tambah Data Portofolio</h6>
