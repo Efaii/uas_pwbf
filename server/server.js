@@ -20,20 +20,13 @@ if (process.env.FRONTEND_URL) {
 
 app.use(cors({
     origin: function (origin, callback) {
-        if (!origin && process.env.NODE_ENV !== 'production') {
-            callback(null, true);
-        } else if (allowedOrigins.indexOf(origin) !== -1) {
+        if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
+            console.error(`CORS Error: Origin ${origin} not allowed. Allowed origins:`, allowedOrigins);
             callback(new Error('Not allowed by CORS'), false);
         }
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-app.use(cors({
-    origin: process.env.FRONTEND_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
