@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- File css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#home"><img src="assets/foto/logo.jpg" alt="Logo Patir"></a>
+            </div>
+            <div class="menu-toggle">
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+                <div class="hamburger"></div>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#portofolio">Portfolio</a></li>
+                <li><a href="#opini">Opini</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
+            <div class="dropdown">More
+                <ul class="dropdown-content">
+                    <li><a href="https://facebook.com" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/iiii.one" target="_blank">Instagram</a></li>
+                    <li><a href="https://tiktok.com/@mangaasep" target="_blank">Tiktok</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Header end -->
+
+    <!-- Main -->
+    <main>
+        <!-- Landing Page -->
+        <section id="home">
+            <div class="home-img">
+                <img src="assets/foto/patir.jpg" alt="Foto Patir">
+            </div>
+            <div class="text-home">
+                <p>Hi, I'm Fathir Ainur.</p>
+                <h4>Informatics Student & Tech Enthusiast.</h4>
+                <div class="home-btn">
+                    <a href="#about">About Me</a>
+                </div>
+            </div>
+        </section>
+        <!-- Landing Page end -->
+
+        <!-- About -->
+        <section id="about">
+            <h4>About Me</h4>
+            <div class="about-container">
+                <div class="text-about">
+                    <p>
+                        Saya seorang mahasiswa teknik informatika semester 2 di Universitas Nahdlatul Ulama Sunan Giri.
+                        Sebagai seorang mahasiswa teknik informatika, sebagai mahasiswa informatika, saya memiliki
+                        antusiasme tinggi terhadap dunia teknologi. Ketertarikan ini kini terfokus pada UI/UX design, di
+                        mana saya terinspirasi oleh potensi desain yang baik dalam meningkatkan interaksi manusia dengan
+                        teknologi, menciptakan pengalaman yang intuitif dan bermakna. Saya bersemangat untuk menggabungkan fondasi teknis saya dengan kreativitas dan empati dalam
+                        UI/UX. Tujuan saya adalah menjadi seorang designer yang mampu menciptakan solusi digital yang
+                        tidak hanya fungsional, tetapi juga memberikan pengalaman pengguna yang luar biasa, melalui
+                        pemahaman prinsip desain, tools, dan riset pengguna.
+                    </p>
+                </div>
+                <div class="about-img">
+                    <img src="assets/foto/fatir.JPG" alt="Foto Fatir">
+                </div>
+            </div>
+        </section>
+        <!-- About end -->
+
+        <!-- Portofolio -->
+        <section id="portofolio">
+            <h4>Portfolio</h4>
+            <div class="table-container">
+                <table id="portofolioTable">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama Kegiatan</th>
+                            <th>Waktu Kegiatan</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <button id="showAddFormBtn">Add New</button>
+            <div class="modal-overlay" id="modalOverlay">
+                <div id="addPortfolioFormContainer">
+                    <button class="close-btn" id="closeModalBtn">&times;</button>
+                    <h6>Tambah Data Portofolio</h6>
+                    <form id="addPortfolioForm">
+                        <div class="form-field">
+                            <p>Nama Kegiatan:</p>
+                            <input 
+                                type="text" 
+                                id="namaKegiatan" 
+                                name="nama_kegiatan" 
+                                placeholder="Masukkan nama kegiatan" 
+                                required>
+                        </div>
+                        <div class="form-field">
+                            <p>Waktu Kegiatan:</p>
+                            <input 
+                                type="text" 
+                                id="waktuKegiatan" 
+                                name="waktu_kegiatan" 
+                                placeholder="Contoh: Januari 2025" 
+                                required>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="submit">Simpan Data</button>
+                            <button type="button" class="cancel" id="cancelAddFormBtn">Batal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- Portofolio end -->
+
+        <!-- Opini -->
+        <section id="opini">
+            <h4>Opini</h4>
+            <div class="opini-container">
+                <div class="card">
+                    <a href="https://www.instagram.com/p/DHoJBaFSIof/" target="_blank">
+                        <img 
+                            src="assets/foto/gsc gdev id.png" 
+                            alt="Solution Challenge 2025">
+                        <div class="card-content">
+                            <h6>Google Solution Challenge 2025</h6>
+                            <p>Maret - Juni 2025</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://www.instagram.com/p/DIY79NGyKtX/" target="_blank">
+                        <img 
+                            src="assets/foto/bwi gdg jakarta.png" 
+                            alt="Build With AI Jakarta">
+                        <div class="card-content">
+                            <h6>Build With AI GDG Jakarta</h6>
+                            <p>10 Mei 2025</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://www.instagram.com/p/DHzgf60Sdli/" target="_blank">
+                        <img 
+                            src="assets/foto/gcr gdg jogjakarta.png" 
+                            alt="GDG Jogja Cloud Roadshow">
+                        <div class="card-content">
+                            <h6>GDG Jogjakarta Cloud Roadshow</h6>
+                            <p>27 April 2025</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://www.instagram.com/p/DHNr42PSPNy/" target="_blank">
+                        <img 
+                            src="assets/foto/bwi gdg jogjakarta.png" 
+                            alt="Build With AI Jogjakarta">
+                        <div class="card-content">
+                            <h6>Build With AI GDG Jogjakarta</h6>
+                            <p>27 April 2025</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://www.instagram.com/p/DI39TJzvuTc/" target="_blank">
+                        <img 
+                            src="assets/foto/iwd gdg surabaya.png" 
+                            alt="IWD Surabaya 2025">
+                        <div class="card-content">
+                            <h6>IWD Surabaya 2025</h6>
+                            <p>26 April 2025</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card">
+                    <a href="https://www.instagram.com/p/DIlsEXAy9TK/" target="_blank">
+                        <img 
+                            src="assets/foto/hackathon gdgoc ui.png" 
+                            alt="GDGoC UI Hackathon">
+                        <div class="card-content">
+                            <h6>GDGoC UI Hackathon</h6>
+                            <p>25 April - 3 Mei 2025</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <!-- Opini end -->
+
+        <!-- Contact Me -->
+        <section id="contact">
+            <h4>Contact Me</h4>
+            <div class="contact-container">
+                <div class="form">
+                    <p>Email</p>
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="email" 
+                        placeholder="Masukkan email anda">
+                    <p>Nama</p>
+                    <input 
+                        type="text" 
+                        name="nama" 
+                        id="nama" 
+                        placeholder="Masukkan nama anda">
+                    <p>Subject</p>
+                    <input 
+                        type="text" 
+                        name="subject" 
+                        id="subject" 
+                        placeholder="Subjek pesan">
+                    <p>Isi</p>
+                    <textarea 
+                        type="text" 
+                        name="isi" 
+                        id="isi" 
+                        placeholder="Tulis pesan anda disini"></textarea>
+                    <button type="submit">Kirim</button>
+                </div>
+                <div class="maps">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3547.95594407206!2d106.80609907447145!3d-6.227574460988518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1495f1fddc9%3A0xfe3d872dbc2b760a!2sGoogle%20Indonesia!5e1!3m2!1sid!2sid!4v1745761955516!5m2!1sid!2sid" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Me end -->
+    </main>
+    <!-- Main end -->
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <h4><i>Copyright &copy; 2025 eF Ai</i></h4>
+        </div>
+    </footer>
+    <!-- Footer end -->
+
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/form.js"></script>
+</body>
+
+</html>
